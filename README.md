@@ -11,88 +11,112 @@
 
 
 '''
-# mke-ffuf
 
-**mke-ffuf** is a revised version of **ffuf** focused on ease of use and cleaner results.
+mke-ffuf
 
-While using ffuf, the output can become very large, making it hard to scroll through results, manually apply filters, and identify unique or meaningful responses. Repeated filtering by size, words, and lines often slows down recon.
+mke-ffuf is a guided and intelligent wrapper around FFUF designed to make web fuzzing easier, cleaner, and more interactive.
 
-To solve this, **mke-ffuf** automatically analyzes ffuf results, filters out generic responses, and displays only unique outputs—making web fuzzing simpler and more comfortable.
+While using FFUF, the output can become very large, making it hard to scroll, manually filter responses, and identify unique or meaningful results. Repeating filters based on size, words, and lines can be time-consuming during recon.
 
-This tool does not replace ffuf.
-It makes ffuf easier to use.
+mke-ffuf solves this by running FFUF silently in the background, automatically filtering generic responses, highlighting unique endpoints, and guiding the user through different fuzzing workflows.
 
----
+This tool does not replace FFUF — it improves usability.
 
-## ✨ Features
+✨ Features
 
-* Silent ffuf execution (no progress spam)
-* Automatic filtering of generic responses
-* Detects repeated response templates (size, words, lines)
-* Displays only unique and meaningful results
-* Interactive flow to try different fuzzing types
-* Clean terminal-friendly output
-* Designed for Linux environments
+Wizard-style interactive workflow
 
----
+Uses FFUF as the fuzzing engine
 
-## 🧠 Why mke-ffuf?
+Automatic filtering of generic responses
 
-When running ffuf:
+Displays only unique and interesting results
 
-* Output grows very large
-* Scrolling becomes difficult
-* Manual filtering takes time
-* Unique responses are easy to miss
+Basic vulnerability-style tagging (ADMIN, LOGIN, AUTH_REQUIRED, etc.)
 
-**mke-ffuf** handles this automatically so you can focus on what matters.
+SecLists auto-detection and optional auto-install
 
----
+Clean terminal-friendly output
 
-## 🛠 Requirements
+Designed for Linux environments
 
-* Linux
-* Python 3.8+
-* ffuf installed and available in `$PATH`
+🛠 Requirements
 
----
+Linux
 
-## 📦 Installation
+Python 3.8+
 
-```bash
-git clone https://github.com/yourusername/mke-ffuf.git
+FFUF installed and available in $PATH
+
+Git (required only if SecLists needs to be installed automatically)
+
+📦 Installation
+1️⃣ Install FFUF
+sudo apt install ffuf
+
+
+Verify installation:
+
+ffuf -h
+
+2️⃣ Clone mke-ffuf
+git clone https://github.com/RadhakrishnanSA/mke-ffuf.git
 cd mke-ffuf
+
+3️⃣ Make the script executable
 chmod +x mke-ffuf.py
-```
 
----
+▶️ Usage
 
-## ▶️ Usage
+Run the tool:
 
-```bash
 ./mke-ffuf.py
-```
 
-The tool will:
+Workflow
 
-1. Ask for the target URL
-2. Run ffuf silently in the background
-3. Filter generic responses
-4. Show only unique results
-5. Suggest other fuzzing methods if needed
+Tool launches with banner
 
----
+Checks for SecLists
 
-## ⚠️ Disclaimer
+Installs or locates SecLists if required
 
-Use only on targets you own or have permission to test.
+Prompts for target URL
 
----
+Allows selection of fuzzing type
 
-## 📄 License
+Shows example FFUF URL
+
+Runs FFUF silently
+
+Displays only unique and tagged results
+
+Asks whether to continue with another scan
+
+🔍 Supported Scan Types
+
+Directory fuzzing
+
+File fuzzing
+
+Parameter fuzzing
+
+Password fuzzing
+
+⚠️ Disclaimer
+
+This tool is intended for educational purposes and authorized security testing only.
+
+Do NOT use this tool against systems you do not own or have explicit permission to test.
+
+📄 License
 
 MIT License
 
----
+🧠 Notes
 
+SecLists is not included in this repository
+
+mke-ffuf can automatically install SecLists when needed
+
+Designed to reduce FFUF output noise and improve recon efficiency
 
